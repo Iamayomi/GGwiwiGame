@@ -27,8 +27,7 @@ const Home = () => {
       <TopBarMenu />
       {/* --------------computer-version---------------- */}
       <section className="xl:flex w-full justify-center">
-        <div className="w-1/6 xl:block hidden bg-[#1a1a1a] text-white p-4">{hasPlacedBet ? <LiveMatchResults hasPlacedBet={hasPlacedBet} /> : <Leftside />}</div>
-
+        <div className="w-1/4 xl:block hidden bg-[#1a1a1a] text-white p-4">{hasPlacedBet ? <LiveMatchResults hasPlacedBet={hasPlacedBet} /> : <Leftside />}</div>
         <Mainpage />
         <Rightside />
       </section>
