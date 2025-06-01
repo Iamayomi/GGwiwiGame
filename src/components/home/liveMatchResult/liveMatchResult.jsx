@@ -61,11 +61,9 @@ const LiveMatchResults = () => {
           {matches.map((match, index) => (
             <div
               key={match.id}
-              className={`flex items-center justify-between bg-black/60 rounded px-3 py-2.5 border border-red-400/20 transition-all duration-500 ${
-                index === 0 ? "animate-pulse bg-green-900/20 border-green-400/30" : ""
-              }`}>
-              {/* Left side - Game info */}
-              <div className="flex items-center gap-2">
+              className={`bg-black/60 rounded px-3 py-2.5 border border-red-400/20 transition-all duration-500 ${index === 0 ? "animate-pulse bg-green-900/20 border-green-400/30" : ""}`}>
+              {/* Top row - Game and Player */}
+              <div className="flex items-center gap-2 mb-2">
                 <span className="text-white text-xs font-medium">Roulette</span>
                 <div className="w-0.5 h-3 bg-gray-500"></div>
                 <div className="flex items-center gap-1">
@@ -74,16 +72,13 @@ const LiveMatchResults = () => {
                   </div>
                   <span className="text-white text-xs">{match.player}</span>
                 </div>
-                <span className="text-gray-400 text-xs">—</span>
               </div>
 
-              {/* Right side - Bet and Result */}
-              <div className="flex items-center gap-2">
+              {/* Bottom row - Bet and Result */}
+              <div className="flex items-center justify-between">
                 {/* Bet amount */}
                 <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs">💰</span>
-                  </div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center text-[8px]">💰</div>
                   <span className="text-white text-xs">Bet: ${match.bet}</span>
                 </div>
 

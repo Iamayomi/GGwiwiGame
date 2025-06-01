@@ -101,7 +101,7 @@ const TopBarMenu = () => {
   return (
     <>
       {/* Desktop topbar menu - Changed from sticky to relative and added margin */}
-      <div className="xl:block hidden relative mt-4 z-[100]">
+      <div className="xl:block hidden relative  z-[100]">
         <Toaster />
 
         {/* WhatsApp */}
