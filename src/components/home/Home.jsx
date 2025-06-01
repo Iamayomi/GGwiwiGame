@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "./middle/Carousel";
 import Mainpage from "./middle/Mainpage";
 import Leftside from "./leftside/Leftside";
@@ -17,15 +17,18 @@ import Livegames from "../mobile/mobile-home/games/Livegames";
 import GamingUI from "./gamesUI";
 
 const Home = () => {
+  const [hasPlacedBet, setHasPlacedBet] = useState(false);
+
+  const placeBet = () => {
+    setHasPlacedBet(true);
+  };
   return (
     <section className="w-full  font-poppins">
       <TopBarMenu />
       {/* --------------computer-version---------------- */}
       <section className="xl:flex w-full justify-center">
-        <div className="w-1/6 hidden md:block">
-          <Leftside />
-          <LiveMatchResults />
-        </div>
+        <div className="w-1/6 xl:block hidden bg-[#1a1a1a] text-white p-4">{hasPlacedBet ? <LiveMatchResults hasPlacedBet={hasPlacedBet} /> : <Leftside />}</div>
+
         <Mainpage />
         <Rightside />
       </section>
@@ -41,6 +44,9 @@ const Home = () => {
         <Livecasino />
         <Tvgames />
       </section> */}
+      <button onClick={placeBet} className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded">
+        Place Bet
+      </button>
     </section>
   );
 };
