@@ -40,16 +40,16 @@ let featuredGames = [
   },
 ];
 
-const LiveGames = [
+let LiveGames = [
   {
-    name: "Roulette",
-    img: IMAGES.bacarat,
+    name: "Roulett",
+    img: "https://script.viserlab.com/xaxino/demo/assets/templates/basic//images/play/rock.png",
     color: "bg-yellow-600 border-yellow-600",
     path: "/rock_game",
   },
   {
-    name: "Blackjack",
-    img: IMAGES.blackjack,
+    name: "BlackJack",
+    img: "https://script.viserlab.com/xaxino/demo/assets/templates/basic/images/play/head.png",
     color: "bg-primary border-primary",
     path: "/coin_flip",
   },
@@ -60,11 +60,12 @@ const LiveGames = [
     path: "/spin_game",
   },
   {
-    name: "Chicken Fighting",
+    name: "Fighting Chicken",
     img: IMAGES.dice,
     color: "bg-primary border-primary",
     path: "/dice_game",
   },
+  { name: "CrashGame", img: IMAGES.crash, color: "bg-primary border-primary", path: "/dice_game" },
 ];
 
 const otherGames = [
@@ -160,8 +161,7 @@ const GamingUI = () => {
         ))}
       </div>
       <div className="uppercase mb-2 text-white">Live Casino Games</div>
-
-      <div className="p-2 grid grid-cols-1 md:grid-cols-4 gap-3 mb-6 place-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-6">
         {games && games.length > 0
           ? games.map((game, index) => <LiveCard key={index} path={`/${game.slug}?id=${game._id}`} name={game.gameName} img={game.image} color={game.color} />)
           : LiveGames.map((game, index) => <LiveCard key={index} {...game} />)}
