@@ -15,40 +15,36 @@ const generateMatchResult = () => {
   };
 };
 
-const LiveMatchResults = ({ hasPlacedBet }) => {
+const LiveMatchResults = () => {
   const [matches, setMatches] = useState([]);
 
+  // Load initial leaderboard data by default
   useEffect(() => {
-    if (hasPlacedBet) {
-      const initialMatches = [
-        { id: "1", game: "Roulette", player: "Jack Hunter", bet: 200, result: "WIN" },
-        { id: "2", game: "Roulette", player: "Jack Hunter", bet: 200, result: "WIN" },
-        { id: "3", game: "Roulette", player: "Jack Hunter", bet: 500, result: "WIN" },
-        { id: "4", game: "Roulette", player: "Jack Hunter", bet: 200, result: "WIN" },
-        { id: "5", game: "Roulette", player: "Jack Hunter", bet: 200, result: "WIN" },
-      ];
-      setMatches(initialMatches);
-    }
-  }, [hasPlacedBet]);
+    const initialMatches = [
+      { id: "1", game: "Roulette", player: "Jack Hunter", bet: 200, result: "WIN" },
+      { id: "2", game: "Roulette", player: "Alex Smith", bet: 300, result: "WIN" },
+      { id: "3", game: "Roulette", player: "Mike Johnson", bet: 500, result: "WIN" },
+      { id: "4", game: "Roulette", player: "Sarah Davis", bet: 400, result: "WIN" },
+      { id: "5", game: "Roulette", player: "Tom Wilson", bet: 600, result: "WIN" },
+    ];
+    setMatches(initialMatches);
+  }, []);
 
+  // Update leaderboard periodically
   useEffect(() => {
-    if (hasPlacedBet) {
-      const interval = setInterval(() => {
-        const newMatch = generateMatchResult();
-        setMatches((prev) => [newMatch, ...prev.slice(0, 4)]);
-      }, 4000);
+    const interval = setInterval(() => {
+      const newMatch = generateMatchResult();
+      setMatches((prev) => [newMatch, ...prev.slice(0, 4)]);
+    }, 4000);
 
-      return () => clearInterval(interval);
-    }
-  }, [hasPlacedBet]);
-
-  if (!hasPlacedBet) return null;
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="w-full  bg-gradient-to-tr from-black/20 via-red-900/95 to-red-800/95 backdrop-blur-sm rounded-lg shadow-2xl border border-red-500/30">
+    <div className="w-full bg-gradient-to-tr from-black/20 via-red-900/95 to-red-800/95 backdrop-blur-sm rounded-lg shadow-2xl border border-red-500/30">
       <div className="flex items-center gap-2 p-3 pb-2.5">
         <BarChart3 className="w-4 h-4 text-white" />
-        <h3 className="text-white font-medium text-sm">Live Match Results</h3>
+        <h3 className="text-white font-medium text-sm">Leaderboard</h3>
         <div className="ml-auto flex items-center gap-1">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
           <span className="text-green-400 text-xs">LIVE</span>
